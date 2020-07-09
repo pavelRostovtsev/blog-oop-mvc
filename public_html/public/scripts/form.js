@@ -10,6 +10,7 @@ $(document).ready(function() {
 			cache: false,
 			processData: false,
 			success: function(result) {
+				$('form')[0].reset();
 				json = jQuery.parseJSON(result);
 				if (json.url) {
 					window.location.href = '/' + json.url;
