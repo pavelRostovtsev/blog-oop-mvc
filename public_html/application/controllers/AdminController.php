@@ -5,14 +5,17 @@ namespace public_html\application\controllers;
 use public_html\application\core\Controller;
 use public_html\application\lib\Pagination;
 
-class AdminController extends Controller {
+class AdminController extends Controller 
+{
 
-	public function __construct($route) {
+	public function __construct($route) 
+	{
 		parent::__construct($route);
 		$this->view->layout = 'admin';
 	}
 
-	public function loginAction() {
+	public function loginAction() 
+	{
 		if (isset($_SESSION['admin'])) {
 			$this->view->redirect('admin/add');
 		}
@@ -26,7 +29,8 @@ class AdminController extends Controller {
 		$this->view->render('Вход');
 	}
 
-	public function addAction() {
+	public function addAction() 
+	{
 		if (!empty($_POST)) {
 			if (!$this->model->postValidate($_POST, 'add')) {
 				$this->view->message('error', $this->model->errorsReporting());
@@ -38,7 +42,8 @@ class AdminController extends Controller {
 		$this->view->render('Добавить пост');
 	}
 
-	public function editAction() {
+	public function editAction() 
+	{
 		if (!$this->model->isPostExists($this->route['id'])) {
 			$this->view->errorCode(404);
 		}
@@ -58,7 +63,8 @@ class AdminController extends Controller {
 		$this->view->render('Редактировать пост', $vars);
 	}
 
-	public function deleteAction() {
+	public function deleteAction() 
+	{
 		if (!$this->model->isPostExists($this->route['id'])) {
 			$this->view->errorCode(404);
 		}
@@ -66,12 +72,14 @@ class AdminController extends Controller {
 		$this->view->redirect('admin/posts');
 	}
 
-	public function logoutAction() {
+	public function logoutAction() 
+	{
 		unset($_SESSION['admin']);
 		$this->view->redirect('admin/login');
 	}
 
-	public function postsAction() {
+	public function postsAction() 
+	{
 		$pagination = new Pagination($this->route, $this->model->postsCount());
 		$vars = [
 			'pagination' => $pagination->get(),

@@ -7,7 +7,8 @@ error_reporting(E_ALL);
 
 
 
-function debug( $str) {
+function debug( $str) 
+{
 	echo "<pre>";
 	var_dump($str);
 	echo "</pre>";

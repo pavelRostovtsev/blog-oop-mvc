@@ -7,7 +7,8 @@ use public_html\application\core\Model;
 
 use Imagick;
 
-class Admin extends Model {
+class Admin extends Model 
+{
 
 	private $error;
 	private $dbDriver;
@@ -30,7 +31,8 @@ class Admin extends Model {
 		return true;
 	}
 
-	public function postValidate($post, $type) {
+	public function postValidate($post, $type) 
+	{
 		$nameLen = iconv_strlen($post['name']);
 		$descriptionLen = iconv_strlen($post['description']);
 		$textLen = iconv_strlen($post['text']);
@@ -51,7 +53,8 @@ class Admin extends Model {
 		return true;
 	}
 
-	public function postAdd($post) {
+	public function postAdd($post) 
+	{
 		
 		$params = [
 			'name' => $post['name'],
@@ -62,7 +65,8 @@ class Admin extends Model {
 
 	}
 
-	public function postEdit($post, $id) {		
+	public function postEdit($post, $id) 
+	{		
 		$params = [
 			'name' => $post['name'],
 			'description' => $post['description'],
@@ -76,7 +80,8 @@ class Admin extends Model {
 			]);
 	}
 
-	public function postUploadImage($path,$id) {
+	public function postUploadImage($path,$id) 
+	{
 		$img = new Imagick($path);
 		$img->cropThumbnailImage(1080, 600);
 		$img->setImageCompressionQuality(80);

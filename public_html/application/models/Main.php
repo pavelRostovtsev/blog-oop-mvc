@@ -5,13 +5,15 @@ namespace public_html\application\models;
 use public_html\application\core\Model;
 use public_html\application\core\DB;
 use public_html\application\core\DBDriver;
-class Main extends Model {
+class Main extends Model 
+{
 
 
 
 	public $error;
 
-	public function contactValidate($post) {
+	public function contactValidate($post) 
+	{
 		$nameLen = iconv_strlen($post['name']);
 		$textLen = iconv_strlen($post['text']);
 		if ($nameLen < 3 or $nameLen > 20) {
